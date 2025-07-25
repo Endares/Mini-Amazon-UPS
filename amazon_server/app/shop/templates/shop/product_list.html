@@ -1,0 +1,35 @@
+{# shop/templates/shop/product_list.html #}
+{% extends "shop/base.html" %}
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Product List</h1>
+
+{% if products %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for p in products %}
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="{% url 'product_detail' product_id=p.id %}">
+            {{ p.description }}
+          </a>
+        </h5>
+        <p class="card-text">In stock: <strong>{{ p.count }}</strong></p>
+        {% if p.count > 0 %}
+        <a href="{% url 'product_detail' product_id=p.id %}" class="btn btn-primary">
+          View & Buy
+        </a>
+        {% else %}
+        <span class="badge bg-warning text-dark">Out of stock</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">Currently Unavailable</div>
+{% endif %}
+{% endblock %}

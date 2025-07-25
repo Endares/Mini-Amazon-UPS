@@ -1,0 +1,35 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+h1, h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+table th,
+table td {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+/* give your order-history table its own class so you don’t affect other tables */
+.order-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.order-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.order-table tr:hover {
+    background-color: #e9ecef;
+}

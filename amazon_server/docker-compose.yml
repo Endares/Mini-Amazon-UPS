@@ -1,0 +1,79 @@
+services:
+  # ===== worldSim 栈 =====
+  mydb:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: abc123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: worldSim
+      POSTGRES_HOST_AUTH_METHOD: trust
+    restart: always
+    # networks: [mini-net] # test mock ups only
+
+  server:
+    build: ../world_simulator_exec/docker_deploy            # 假设放在子目录
+    command: bash -c "./wait-for-it.sh mydb:5432 --strict -- ./server 12345 23456 0"
+    ports:        
+      - "12345:12345"
+      - "23456:23456"
+    depends_on:
+      - mydb
+    # networks: [mini-net] # test mock ups only
+
+  # ===== Amazon 栈 =====
+
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=amazon
+      - POSTGRES_USER=amazon
+      - POSTGRES_PASSWORD=amazonpw
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    # networks: [mini-net] # test mock ups only
+
+  backend:
+    build: ./backend
+    image: amazon_backend
+    depends_on:
+      - db
+      - server
+      # - mock-ups
+    ports:
+      - "8080:8080"
+    environment:
+      UPS_HOST: vcm-45096.vm.duke.edu   # ← 询问 UPS 组要的域名 / IP
+      # UPS_HOST: mock-ups
+      UPS_PORT: "22222"
+      WORLD_HOST: server
+      WORLD_PORT: "23456"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/amazon"
+      SPRING_DATASOURCE_USERNAME: "amazon"
+      SPRING_DATASOURCE_PASSWORD: "amazonpw"
+    # networks: [mini-net] # test mock ups only
+
+  app:
+    build: ./app
+    image: amazon_app
+    depends_on:
+      - backend
+    ports:
+      - "8000:8000"
+    environment:
+      JAVA_BACKEND_URL: "http://backend:8080/api"
+      DATABASE_URL: "postgres://amazon:amazonpw@db:5432/amazon"
+      WORLD_HOST: server
+      WORLD_PORT: "23456"
+    # networks: [mini-net] # test mock ups only
+
+  # mock-ups:
+  #   build: ./mock-ups
+  #   ports:
+  #     - "22222:22222"        # 暴露给 Amazon
+  #   networks: [mini-net]
+volumes:
+  db-data:
+
+# networks:
+#   mini-net:                            
+#     driver: bridge

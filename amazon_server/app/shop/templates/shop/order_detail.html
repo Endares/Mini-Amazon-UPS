@@ -1,0 +1,38 @@
+{% extends "shop/base.html" %}
+{% block title %}Order {{ order.orderId }} Details{% endblock %}
+
+{% block content %}
+<h1>Order #{{ order.orderId }}</h1>
+
+<ul class="list-unstyled mb-3">
+  <li><strong>Status:</strong> {{ order.status }}</li>
+  <li><strong>Destination (X, Y):</strong> ({{ order.destX }}, {{ order.destY }})</li>
+</ul>
+
+{% if order.items %}
+<h2>Items in this order</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in order.items %}
+    <tr>
+      <td>{{ item.productId }}</td>
+      <td>{{ item.quantity }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">No items found for this order.</div>
+{% endif %}
+
+<p class="mt-4">
+  <a href="{% url 'order_history' %}">&laquo; Back to Orders</a> |
+  <a href="{% url 'product_list' %}">Back to Products &raquo;</a>
+</p>
+{% endblock %}

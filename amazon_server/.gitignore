@@ -1,0 +1,50 @@
+# Java / Maven
+/target/
+/backend/target/
+/backend/.mvn/
+/backend/mvnw
+/backend/mvnw.cmd
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/release.properties
+**/dependency-reduced-pom.xml
+
+# Spring Boot logs
+/*.log
+
+# IntelliJ IDEA
+/.idea/
+*.iws
+*.iml
+*.ipr
+
+# VSCode
+.vscode/
+
+# Python / Django
+/app/**/__pycache__/
+/app/**/*.py[cod]
+/app/.venv/
+/app/shop/migrations/
+/app/shop/__pycache__/
+/app/shop/migrations/__pycache__/
+
+# Docker overrides and env files
+docker-compose.override.yml
+*.env
+
+# Generated sources
+/backend/target/generated-sources/
+
+# Misc
+*.log
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Django SQLite
+/app/db.sqlite3
+
