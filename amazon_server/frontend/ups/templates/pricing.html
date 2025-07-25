@@ -1,0 +1,144 @@
+{% extends 'main_page.html' %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+<style>
+    .pricing-container {
+        background: linear-gradient(120deg, #434343 0%, #262626 100%);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+        padding: 3rem 2rem 2.5rem 2rem;
+        margin-top: 2.5rem;
+        color: #fff;
+    }
+    .pricing-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    .pricing-header .icon {
+        font-size: 4rem;
+        color: #ffd200;
+        background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+    .pricing-table {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+    .pricing-card {
+        background: rgba(255,255,255,0.07);
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+        padding: 2rem 1.5rem;
+        min-width: 260px;
+        max-width: 320px;
+        text-align: center;
+        transition: box-shadow 0.2s;
+        border: 2px solid transparent;
+    }
+    .pricing-card:hover {
+        box-shadow: 0 6px 24px rgba(255,210,0,0.15);
+        border: 2px solid #ffd200;
+        background: rgba(255,255,255,0.13);
+    }
+    .pricing-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffd200;
+        margin-bottom: 1rem;
+    }
+    .pricing-price {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.2rem;
+    }
+    .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+        color: #fff;
+        font-size: 1.1rem;
+    }
+    .pricing-features li {
+        margin-bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pricing-features i {
+        color: #ffd200;
+        margin-right: 0.5em;
+    }
+    .btn-custom-primary {
+        background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 2rem;
+        padding: 0.7rem 1.5rem;
+        transition: background 0.2s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-custom-primary:hover {
+        background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="pricing-container">
+                <div class="pricing-header">
+                    <div class="icon"><i class="mdi mdi-currency-usd"></i></div>
+                    <h2>Pricing Plans</h2>
+                    <p class="lead mb-4">Choose the best logistics plan for you. Transparent pricing, premium service.</p>
+                </div>
+                <div class="pricing-table">
+                    <div class="pricing-card">
+                        <div class="pricing-title">Basic Plan</div>
+                        <div class="pricing-price">$5<span style="font-size:1rem;font-weight:400;">/package</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="mdi mdi-check-circle-outline"></i>Standard delivery (3-5 days)</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Real-time package tracking</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Basic customer support</li>
+                        </ul>
+                        <a href="#" class="btn-custom-primary">Choose Basic</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-title">Express Plan</div>
+                        <div class="pricing-price">$12<span style="font-size:1rem;font-weight:400;">/package</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="mdi mdi-check-circle-outline"></i>Express delivery (1-2 days)</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Real-time package tracking</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Priority customer support</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Free insurance</li>
+                        </ul>
+                        <a href="#" class="btn-custom-primary">Choose Express</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-title">Premium Plan</div>
+                        <div class="pricing-price">$25<span style="font-size:1rem;font-weight:400;">/package</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="mdi mdi-check-circle-outline"></i>Same-day delivery (selected areas)</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Dedicated customer service</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>High-value insurance</li>
+                            <li><i class="mdi mdi-check-circle-outline"></i>Free door-to-door pickup</li>
+                        </ul>
+                        <a href="#" class="btn-custom-primary">Choose Premium</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

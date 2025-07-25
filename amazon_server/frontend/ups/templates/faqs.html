@@ -1,0 +1,109 @@
+{% extends 'main_page.html' %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+<style>
+    .faqs-container {
+        background: linear-gradient(120deg, #434343 0%, #262626 100%);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+        padding: 3rem 2rem 2.5rem 2rem;
+        margin-top: 2.5rem;
+        color: #fff;
+    }
+    .faqs-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    .faqs-header .icon {
+        font-size: 4rem;
+        color: #ffd200;
+        background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+    .faq-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .faq-item {
+        background: rgba(255,255,255,0.07);
+        border-radius: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem 1.2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+        transition: box-shadow 0.2s;
+    }
+    .faq-item:hover {
+        box-shadow: 0 6px 24px rgba(255,210,0,0.15);
+        background: rgba(255,255,255,0.13);
+    }
+    .faq-question {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #ffd200;
+        margin-bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+    }
+    .faq-question i {
+        margin-right: 0.5em;
+        font-size: 1.3em;
+    }
+    .faq-answer {
+        color: #fff;
+        font-size: 1.08rem;
+        margin-left: 2.1em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="faqs-container">
+                <div class="faqs-header">
+                    <div class="icon"><i class="mdi mdi-frequently-asked-questions"></i></div>
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="lead mb-4">Find answers to the most common questions about Mini UPS.</p>
+                </div>
+                <ul class="faq-list">
+                    <li class="faq-item">
+                        <div class="faq-question"><i class="mdi mdi-help-circle-outline"></i>How do I track my package?</div>
+                        <div class="faq-answer">
+                            You can track your package in real time by logging into your account and clicking "Track a package" in the navigation bar.
+                        </div>
+                    </li>
+                    <li class="faq-item">
+                        <div class="faq-question"><i class="mdi mdi-help-circle-outline"></i>What delivery options are available?</div>
+                        <div class="faq-answer">
+                            We offer Basic (3-5 days), Express (1-2 days), and Premium (same-day, selected areas) delivery plans. See the Pricing page for details.
+                        </div>
+                    </li>
+                    <li class="faq-item">
+                        <div class="faq-question"><i class="mdi mdi-help-circle-outline"></i>How can I change my delivery address?</div>
+                        <div class="faq-answer">
+                            If your package is still in "delivering" status, you can edit the destination address from the package details page.
+                        </div>
+                    </li>
+                    <li class="faq-item">
+                        <div class="faq-question"><i class="mdi mdi-help-circle-outline"></i>What should I do if my package is lost?</div>
+                        <div class="faq-answer">
+                            Please contact our customer support immediately. If you purchased insurance, you may be eligible for compensation.
+                        </div>
+                    </li>
+                    <li class="faq-item">
+                        <div class="faq-question"><i class="mdi mdi-help-circle-outline"></i>How do I contact customer support?</div>
+                        <div class="faq-answer">
+                            You can reach us via the Support link in the footer or email us at <a href="mailto:support@miniups.com" style="color:#ffd200;">support@miniups.com</a>.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

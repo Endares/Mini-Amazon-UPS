@@ -1,0 +1,18 @@
+2025-04-28 19:43:37.540 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+2025-04-28 19:43:37.637 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-04-28 19:43:38.005 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-04-28 19:43:38.182 [main] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-04-28 19:43:38.188 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+2025-04-28 19:43:38.189 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://db:5432/ups]
+2025-04-28 19:43:38.189 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {password=****, user=postgres}
+2025-04-28 19:43:38.190 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2025-04-28 19:43:38.192 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001115: Connection pool size: 20 (min=1)
+2025-04-28 19:43:38.562 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-28 19:43:39.252 [main] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 7.0.1.Final
+2025-04-28 19:43:40.271 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-28 19:43:40.300 [main] INFO  o.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7b5ac347] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-04-28 19:43:40.535 [main] INFO  org.example.UpsServer - MessageHandler initialized
+2025-04-28 19:43:40.536 [main] INFO  org.example.UpsServer - UPS Server started on port: 22222
+2025-04-28 19:43:40.545 [main] INFO  org.example.UpsServer - Connected to World simulator at vcm-45098.vm.duke.edu:12345
+2025-04-28 19:43:40.546 [main] INFO  org.example.UpsServer - Database session factory initialized
+2025-04-28 19:43:40.546 [main] INFO  org.example.UpsServer - checkpoint1

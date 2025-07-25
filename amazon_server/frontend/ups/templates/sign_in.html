@@ -1,0 +1,122 @@
+{% extends 'main_page.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+<style>
+    .signin-container {
+        background: linear-gradient(120deg, #434343 0%, #262626 100%);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+        padding: 3rem 2.5rem 2.5rem 2.5rem;
+        margin-top: 3rem;
+        color: #fff;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .signin-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .signin-header .icon {
+        font-size: 3.5rem;
+        color: #ffd200;
+        background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+    }
+    .form-label {
+        color: #b0b3b8;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border-radius: 0.8rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1.2rem;
+    }
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: #ffd200;
+        color: #fff;
+        box-shadow: 0 0 0 0.2rem rgba(255, 210, 0, 0.25);
+    }
+    .btn-custom-primary {
+        background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 2rem;
+        padding: 0.75rem 1.5rem;
+        transition: background 0.2s;
+        width: 100%;
+        margin-bottom: 1.2rem;
+    }
+    .btn-custom-primary:hover {
+        background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+        color: #fff;
+    }
+    .alert-danger {
+        background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+        color: #fff;
+        border: none;
+        border-radius: 1rem;
+        text-align: center;
+        margin-bottom: 1.2rem;
+    }
+    .signin-footer {
+        text-align: center;
+        color: #b0b3b8;
+        margin-top: 2rem;
+    }
+    .link-primary {
+        color: #ffd200 !important;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+    .link-primary:hover {
+        color: #f7971e !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="signin-container">
+    <div class="signin-header">
+        <div class="icon"><i class="mdi mdi-account-key"></i></div>
+        <img class="mb-3"
+            src="https://i.ibb.co/jM9DRCf/kisspng-carpool-taxi-carsharing-blablacar-5b0d9325d3f787-1377987315276162938682.png"
+            alt="" width="80" height="65">
+        <h2 class="fw-bold">Please sign in</h2>
+    </div>
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        <i class="mdi mdi-alert-circle-outline me-2"></i>{{ error }}
+    </div>
+    {% endif %}
+
+    <form method="post" action="/sign_in/">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="floatingInput" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="user_email" required>
+        </div>
+        <div class="mb-3">
+            <label for="floatingPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="user_password" required>
+        </div>
+        <button class="btn btn-custom-primary" type="submit">Sign in</button>
+    </form>
+
+    <div class="signin-footer">
+        <a href="{% url 'sign_up' %}" class="link-primary">Click here to sign up!</a>
+        <p class="mt-4 mb-0">&copy; 2017-2022</p>
+    </div>
+</div>
+{% endblock %}

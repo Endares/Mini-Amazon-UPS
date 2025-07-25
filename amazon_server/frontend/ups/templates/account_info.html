@@ -1,0 +1,108 @@
+{% extends 'main_page.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+<style>
+    .account-info-container {
+        background: linear-gradient(120deg, #434343 0%, #262626 100%);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+        padding: 3rem;
+        margin-top: 2rem;
+        color: #fff;
+    }
+    .account-info-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    .account-info-header .icon {
+        font-size: 4rem;
+        color: #ffd200;
+        background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+    .form-label {
+        color: #b0b3b8;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    .info-label {
+        color: #ffd200;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    .info-value {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+    }
+    .btn-custom-secondary {
+        background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 2rem;
+        padding: 0.75rem 1.5rem;
+        transition: background 0.2s;
+        margin-right: 1rem;
+    }
+    .btn-custom-secondary:hover {
+        background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+        color: #fff;
+    }
+    .alert-warning {
+        background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+        color: #fff;
+        border: none;
+        border-radius: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="account-info-container">
+                <div class="account-info-header">
+                    <div class="icon"><i class="mdi mdi-account-circle"></i></div>
+                    <h2>Account Information</h2>
+                </div>
+
+                {% if message %}
+                <div class="alert alert-warning text-center" role="alert">
+                    <i class="mdi mdi-alert-circle-outline me-2"></i>{{ message }}
+                </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="{% static 'img/avatar.png' %}" alt="avatar"
+                            class="rounded-circle img-fluid mb-3" style="width: 150px;">
+                        <h5 class="my-3">{{ user.username }}</h5>
+                        <div class="d-grid gap-2">
+                            <a class="btn btn-custom-secondary mb-2" href="{% url 'search_packages' %}">
+                                <i class="mdi mdi-package-variant-closed me-1"></i>Track a package
+                            </a>
+                            <a class="btn btn-custom-secondary" href="{% url 'user_packages' %}">
+                                <i class="mdi mdi-package-variant me-1"></i>My packages
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div>
+                            <div class="info-label">User Name</div>
+                            <div class="info-value">{{ user.username }}</div>
+                            <div class="info-label">Email</div>
+                            <div class="info-value">{{ user.email }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

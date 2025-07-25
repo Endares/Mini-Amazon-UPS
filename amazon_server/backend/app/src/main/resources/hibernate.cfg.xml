@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://db:5432/ups</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">passw0rd</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="org.example.common.Truck"/>
+        <mapping class="org.example.common.Shipment"/>
+        <mapping class="org.example.common.Request"/>
+        <mapping class="org.example.common.User"/>
+        <mapping class="org.example.common.Warehouse"/>
+        <mapping class="org.example.common.Ack"/>
+        <mapping class="org.example.common.ResendAck"/>
+        <mapping class="org.example.common.UDeliveryLocationD"/>
+        <mapping class="org.example.common.UGoDeliverD"/>
+        <mapping class="org.example.common.UGoPickupD"/>
+        <mapping class="org.example.common.UQueryD"/>
+    </session-factory>
+</hibernate-configuration>

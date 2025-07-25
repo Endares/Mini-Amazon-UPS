@@ -1,0 +1,159 @@
+{% extends 'main_page.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+<style>
+    .features-container {
+        background: linear-gradient(120deg, #434343 0%, #262626 100%);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+        padding: 3rem 2rem 2.5rem 2rem;
+        margin-top: 2.5rem;
+        color: #fff;
+    }
+    .features-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    .features-header .icon {
+        font-size: 4rem;
+        color: #ffd200;
+        background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+    .feature-card {
+        background: rgba(255,255,255,0.07);
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+        padding: 2rem 1.5rem;
+        min-width: 260px;
+        max-width: 420px;
+        text-align: center;
+        margin: 0 auto;
+        border: 2px solid transparent;
+    }
+    .feature-card:hover {
+        box-shadow: 0 6px 24px rgba(255,210,0,0.15);
+        border: 2px solid #ffd200;
+        background: rgba(255,255,255,0.13);
+    }
+    .feature-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #ffd200;
+        margin-bottom: 1rem;
+    }
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.7rem;
+        color: #ffd200;
+    }
+    .feature-desc {
+        color: #fff;
+        font-size: 1.08rem;
+        margin-bottom: 0.5rem;
+    }
+    .input-group {
+        margin: 1.5rem 0 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border-radius: 0.8rem;
+        padding: 0.75rem 1rem;
+        margin-right: 1rem;
+        width: 200px;
+    }
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: #ffd200;
+        color: #fff;
+        box-shadow: 0 0 0 0.2rem rgba(255, 210, 0, 0.25);
+    }
+    .btn-custom-primary {
+        background: linear-gradient(90deg, #ff5858 0%, #f09819 100%);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 2rem;
+        padding: 0.7rem 1.5rem;
+        transition: background 0.2s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-custom-primary:hover {
+        background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+        color: #fff;
+        text-decoration: none;
+    }
+    .result-message {
+        margin-top: 1.2rem;
+        font-weight: 600;
+        color: #ffd200;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="features-container">
+                <div class="features-header">
+                    <div class="icon"><i class="mdi mdi-wechat"></i></div>
+                    <h2>WeChat Notification Demo</h2>
+                    <p class="lead mb-4">Enter a package ID and push its status to your WeChat via Server酱.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="mdi mdi-bell-ring-outline"></i></div>
+                    <div class="feature-title">Push Package Status to WeChat</div>
+                    <div class="input-group">
+                        <input type="text" id="package_id_input" class="form-control" placeholder="Enter package ID">
+                        <button class="btn-custom-primary" id="push_btn" type="button">
+                            <i class="mdi mdi-send"></i> Push to WeChat
+                        </button>
+                    </div>
+                    <div id="result_message" class="result-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+document.getElementById('push_btn').onclick = function() {
+    var packageId = document.getElementById('package_id_input').value.trim();
+    var resultDiv = document.getElementById('result_message');
+    if (!packageId) {
+        resultDiv.innerText = "Please enter a package ID.";
+        return;
+    }
+    resultDiv.innerText = "Pushing...";
+    fetch("{% url 'push_wechat' %}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": "{{ csrf_token }}"
+        },
+        body: JSON.stringify({package_id: packageId})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            resultDiv.innerText = "Push successful! Please check your WeChat.";
+        } else {
+            resultDiv.innerText = "Push failed: " + data.message;
+        }
+    })
+    .catch(() => {
+        resultDiv.innerText = "Network error.";
+    });
+};
+</script>
+{% endblock %}

@@ -1,0 +1,5 @@
+{
+    "java.project.sourcePaths": ["backend/app/src/main/java"],
+    "java.project.outputPath": "build/classes",
+    "java.configuration.updateBuildConfiguration": "automatic"
+  }
