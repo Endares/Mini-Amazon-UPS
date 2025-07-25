@@ -77,3 +77,5 @@ Simulates the environment with trucks and warehouses:
 
 ```bash
 docker-compose up --build
+
+As how to run UPS server and Amazon server, please refer to README.md in their own directorys.
