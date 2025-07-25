@@ -1,5 +1,4 @@
-# ERSS-project-cl673-sz318
-
+# UPS SERVER
 
 ## see the information in database
 ```bash
