@@ -20,7 +20,7 @@ This project implements a simplified simulation of an e-commerce platform ("Mini
 ├── dangerlog.md # Debugging logs and issues
 ├── README.md # Project documentation
 └── Task # Task planning (optional placeholder)
-
+```
 ---
 
 ## 🌐 System Architecture & Interaction Principles
