@@ -8,6 +8,7 @@ This project implements a simplified simulation of an e-commerce platform ("Mini
 
 ## 📁 Directory Structure
 
+```yaml
 .
 ├── backend/ # Backend services for Amazon and UPS
 ├── frontend/ # Web interface for ordering and tracking
@@ -19,10 +20,6 @@ This project implements a simplified simulation of an e-commerce platform ("Mini
 ├── dangerlog.md # Debugging logs and issues
 ├── README.md # Project documentation
 └── Task # Task planning (optional placeholder)
-
-yaml
-Copy
-Edit
 
 ---
 
